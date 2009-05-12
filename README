@@ -1,0 +1,31 @@
+Info
+====
+
+This tool provides a generic way to access the data on the weatherstation
+Conrad/ELV WS444. The concept was to write a tool which runs on an OpenWrt
+enabled router with an USB port to just output the weatherstation status via a
+webpage which is later fetched by another tool which puts the data into an RRD
+or MySQL-Database.
+
+Very helpful was the data stream analysis from another project by Jörg Köhler
+from kisdndial.de which also reads the data from the WS444 and is able to
+display it graphically and put it into a database.
+
+If you want to format the output of this tool please see ws.c as an example on
+how to handle the data.
+
+
+Compile
+=======
+
+Simply: make
+
+(At the moment there is no autoconf in planning, but if you want to do it,
+please let me know so I can put it in the repository.)
+
+
+Debug Messages
+==============
+
+Type: make WS_DEBUG=1
+
