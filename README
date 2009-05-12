@@ -29,3 +29,28 @@ Debug Messages
 
 Type: make WS_DEBUG=1
 
+
+Demo Output
+===========
+
+If you use the standard JSON output, it will look like this:
+
+{
+  "version":         "0.01",
+  "timestamp":       "1241429222",
+  "version_station": "23",
+  "wind_speed":      "7.7",
+  "rain_sensor":     "58.7",
+  "forecast":        "rain",
+  "sensor":          {
+    "0":               {
+      "temperature":    "21.6",
+      "humidity":       "45"
+    },
+    "9":               {
+      "temperature":    "9.1",
+      "humidity":       "64"
+    }
+  }
+}
+
