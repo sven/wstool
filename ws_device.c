@@ -34,6 +34,7 @@ struct ftdi_context ftdic;
 int ws_device_open(void)
 {
     int ret;
+    int not_found;
 
     /* initialize ftdi structure */
     check(ftdi_init(&ftdic), goto bye);
@@ -42,7 +43,12 @@ int ws_device_open(void)
     ftdic.type = TYPE_AM;
 
     /* open device */
-    check_ftdi(ftdi_usb_open(&ftdic, 0x0403, 0xe0f7), goto bye_init);
+    not_found = 0;
+    check_ftdi(ftdi_usb_open(&ftdic, 0x0403, USBID_WS300), not_found = 1);
+
+    if (not_found) {
+	check_ftdi(ftdi_usb_open(&ftdic, 0x0403, USBID_WS444), goto bye_init);
+    }
     
     /* reset device */
     check_ftdi(ftdi_usb_reset(&ftdic), goto bye_close);
