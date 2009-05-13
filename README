@@ -54,3 +54,21 @@ If you use the standard JSON output, it will look like this:
   }
 }
 
+
+Credits
+=======
+
+The idea to this project was born by my teachers Sven Peter and Andreas
+Petzoldt from the Industrieschule Chemnitz. They wanted to include a
+weatherstation which is fixed on the roof of the school into the school
+website. Special thanks to Sven Peter who provided us with the necessary
+hardware, network access and a lot of support.
+
+The other project members are:
+  * Claudio-E. Himmer   -> collectd plugin, mysql storage and server administration
+  * Michael Kühn        -> API to access data from RRD and MySQL via web
+  * Michael Stummvoll   -> Java chart to visualize the data
+
+If you are interested in the other parts, please contact me at
+dev@mcbachmann.de.
+
