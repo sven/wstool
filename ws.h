@@ -38,10 +38,6 @@
 #define check_cond(func, cond, action) if ((ret = func) cond) { ERR("Function call \""#func"\" failed (Condition %s): %i\n", #cond, ret); action; }
 #define check_func(func, func_name, action) if ((ret = func) < 0) { ERR("Function call \"%s\" failed: %i\n", func_name, ret); action; }
 
-/* define USB IDs */
-#define USBID_WS300	    0xe0f6
-#define USBID_WS444	    0xe0f7
-
 /* define global constants */
 #define CMD_ESCAPE	    0xF8
 #define CMD_BEG		    0xFE
