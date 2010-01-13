@@ -58,6 +58,8 @@ double ws_conv_wind_speed(struct record_s* record)
  */
 double ws_conv_temperature(int temp)
 {
+    if (temp > 0xFF00)
+        temp -= 0x10000;
     return ((double) temp / 10);
 }
 
