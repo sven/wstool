@@ -79,6 +79,7 @@ void ws_print_human(void)
     printf("Version Station:          %i\n",   version.nr);
     printf("Wind Speed:               %.1f km/h\n", ws_conv_wind_speed(&record));
     printf("Rain Sensor:              %.1f mm\n", ws_conv_rainfall(&config, &record));
+    printf("Pressure:                 %.0f hPa\n", ws_conv_pressure(&config, &record));
     printf("Forecast:                 %s\n",   ws_conv_forecast(&record));
 
     ws_print_human_sensor(0, record.station.temp, record.station.humidity);
@@ -121,6 +122,7 @@ void ws_print_json(void)
     printf("  \"version_station\": \"%i\",\n",   version.nr);
     printf("  \"wind_speed\":      \"%.1f\",\n", ws_conv_wind_speed(&record));
     printf("  \"rain_sensor\":     \"%.1f\",\n", ws_conv_rainfall(&config, &record));
+    printf("  \"pressure\":        \"%.0f\",\n", ws_conv_pressure(&config, &record));
     printf("  \"forecast\":        \"%s\",\n",   ws_conv_forecast(&record));
 
     printf("  \"sensor\":          {\n");

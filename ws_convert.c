@@ -63,3 +63,12 @@ double ws_conv_temperature(int temp)
     return ((double) temp / 10);
 }
 
+/*
+ * ws_conv_pressure
+ *
+ * Make atmospheric pressure human readable.
+ */
+double ws_conv_pressure(struct config_s* config, struct record_s* record)
+{
+    return (double)record->station.pressure + (double)config->onz/8 - 1;
+}

@@ -129,6 +129,7 @@ double ws_conv_rainfall(struct config_s*, struct record_s*);
 char * ws_conv_forecast(struct record_s*);
 double ws_conv_wind_speed(struct record_s*);
 double ws_conv_temperature(int);
+double ws_conv_pressure(struct config_s*, struct record_s*);
 
 #endif /* __WS444_H_ */
 
