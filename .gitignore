@@ -1,0 +1,5 @@
+*.o
+*.so
+ws
+libws.so
+tags
