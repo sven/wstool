@@ -73,7 +73,7 @@ struct config_s {
 
 struct record_s {
     struct __attribute__ ((__packed__)) {
-	__u16	temp;
+	__s16	temp;
 	__u8	humidity;
     } sensor[9];
 
@@ -81,7 +81,7 @@ struct record_s {
     __u16	wind;
 
     struct __attribute__ ((__packed__)) {
-	__u16	temp;
+	__s16	temp;
 	__u8	humidity;
 	__u16	pressure;
 	__u8	forecast;
@@ -92,7 +92,7 @@ struct record_next_s {
     __u16	tvoid;
     __u16	time;
     struct __attribute__ ((__packed__)) {
-	__u16	temp;
+	__s16	temp;
 	__u8	humidity;
     } sensor[9];
 
@@ -100,7 +100,7 @@ struct record_next_s {
     __u16	wind;
 
     struct __attribute__ ((__packed__)) {
-	__u16	temp;
+	__s16	temp;
 	__u8	humidity;
 	__u16	pressure;
 	__u8	forecast;
