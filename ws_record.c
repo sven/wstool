@@ -72,3 +72,49 @@ bye:
     return ret;
 }
 
+int ws_record_next(void *record_void)
+{
+    int cnt;
+    int ret;
+    struct receive_s recv;
+    struct record_next_s *record = record_void;
+
+    /* initialize receiving thread */
+    recv.tries = 10;
+    recv.buffer = (u_char*) record;
+    recv.length = sizeof(struct record_next_s);
+    recv.command = CMD_RECORD_NEXT;
+
+    check(ws_recv_init(&recv), goto bye);
+
+    /* send current record command */
+    check(ws_send(CMD_RECORD_NEXT), goto bye_recv);
+
+    /* wait for data and end thread */
+    sem_wait(recv.wait);
+
+    /* check if data is valid */
+    if (recv.tries < 1) {
+	ret = WS_ERR;
+	goto bye_recv;
+    }
+
+    /* convert data to CPU endianess */
+    INFO("Received %i record bytes.\n", recv.pos);
+    for (cnt = 0; cnt < 9; cnt++) {
+	record->sensor[cnt].temp = __be16_to_cpu(record->sensor[cnt].temp);
+    }
+    record->time = __be16_to_cpu(record->time);
+    record->rain = __be16_to_cpu(record->rain);
+    record->wind = __be16_to_cpu(record->wind);
+    record->station.pressure = __be16_to_cpu(record->station.pressure);
+    record->station.temp = __be16_to_cpu(record->station.temp);
+
+    ret = WS_OK;
+
+bye_recv:
+    ws_recv_stop(&recv);
+
+bye:
+    return ret;
+}

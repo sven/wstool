@@ -88,6 +88,27 @@ struct record_s {
     } station;
 } __attribute__ ((__packed__));
 
+struct record_next_s {
+    __u16	tvoid;
+    __u16	time;
+    struct __attribute__ ((__packed__)) {
+	__u16	temp;
+	__u8	humidity;
+    } sensor[9];
+
+    __u16	rain;
+    __u16	wind;
+
+    struct __attribute__ ((__packed__)) {
+	__u16	temp;
+	__u8	humidity;
+	__u16	pressure;
+	__u8	forecast;
+    } station;
+} __attribute__ ((__packed__));
+
+
+
 struct receive_s {
     int     tries;			    /* sleeps WS_RECV_TIMEOUT between each try */
     sem_t*  wait;
@@ -118,6 +139,7 @@ int ws_version(void*);
 
 /* ws_record.c */
 int ws_record_current(void *);
+int ws_record_next(void *);
 
 /* ws_misc.c */
 int ws_send_repeat(int (*)(void*), void *, char*);
