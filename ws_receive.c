@@ -44,8 +44,8 @@ int ws_recv_init(struct receive_s* recv)
     thread_exit = 0;
 
     /* initialize semaphore */
-    sem_unlink("ws_receive");
-    recv->wait = sem_open("ws_receive", O_CREAT, 0660, 0);
+    recv->wait = (sem_t *) malloc(sizeof(sem_t));
+    sem_init(recv->wait, 0, 0);
 
     check_cond(pthread_create(&ws_recv_thread_data, NULL, ws_recv_thread, recv), != 0, return -1);
 
