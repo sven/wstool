@@ -26,6 +26,7 @@
 /* define supported devices */
 int usb_devs[][2] = {
     { 0x0403, 0xe0f6 },		/* ELV WS 300 PC */
+    { 0x1b1f, 0xc006 },		/* ELV WS 300 PC-II */
     { 0x0403, 0xe0f7 },		/* Conrad WS 444 PC */
     { 0, 0 },			/* End Marker */
 };
